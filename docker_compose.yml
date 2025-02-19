@@ -1,0 +1,19 @@
+version: "3"
+services:
+  microservice1:
+    build: ./microservice1
+    ports:
+      - "5001:5001"
+  microservice2:
+    build: ./microservice2
+    ports:
+      - "5002:5002"
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - microservice1
+      - microservice2
+
+
