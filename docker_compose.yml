@@ -8,6 +8,10 @@ services:
     build: ./microservice2
     ports:
       - "5002:5002"
+  microservice3:
+    build: ./microservice3
+    ports:
+      - "5003:5003"
   frontend:
     build: ./frontend
     ports:
@@ -15,5 +19,6 @@ services:
     depends_on:
       - microservice1
       - microservice2
+      - microservice3
 
 
