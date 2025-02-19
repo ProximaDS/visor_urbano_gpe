@@ -1,2 +1,2 @@
-# visor_urbano_gpe
+# Visor urbano guadalupe
 Vista preliminar para el visor urbano de Guadalupe Nuevo León
