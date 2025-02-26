@@ -1,10 +1,11 @@
 import folium
 import requests
 
-# Crear el mapa base (ajusta la ubicación y el zoom según tus necesidades)
-m = folium.Map(location=[23.6345, -102.5528], zoom_start=5)
+# Coordenadas centrales del mapa (ajusta según la extensión de tu raster)
+centro = [25.671658916865567, -100.24925884994464]
+m = folium.Map(location=centro, zoom_start=14)
 
-# Cargar capa 1 desde microservice1 (por ejemplo, GeoJSON)
+# Cargar capa 1 (por ejemplo, GeoJSON) desde microservice1
 try:
     response1 = requests.get("http://microservice1:5001/layer1")
     data1 = response1.json()
@@ -12,7 +13,7 @@ try:
 except Exception as e:
     print("Error al cargar Layer 1:", e)
 
-# Cargar capa 2 desde microservice2 (por ejemplo, GeoJSON)
+# Cargar capa 2 (por ejemplo, GeoJSON) desde microservice2
 try:
     response2 = requests.get("http://microservice2:5002/layer2")
     data2 = response2.json()
@@ -20,32 +21,20 @@ try:
 except Exception as e:
     print("Error al cargar Layer 2:", e)
 
-# Cargar la capa de tiles (raster) desde microservice3
-try:
-    response3 = requests.get("http://microservice3:5003/layer3")
-    data3 = response3.json()
-    for raster in data3.get("rasters", []):
-        tile_url = raster.get("url")  # Ejemplo: "http://microservice3:5003/tiles/corredores_verdes_transformed/{z}/{x}/{y}.png"
-        layer_name = raster.get("name", "Raster")
-        min_zoom = raster.get("min_zoom", 12)
-        max_zoom = raster.get("max_zoom", 20)
-        
-        folium.raster_layers.TileLayer(
-            tiles=tile_url,
-            attr='Tiles GDAL',
-            name=layer_name,
-            overlay=True,
-            control=True,
-            tms=False,  # Establece en False para el esquema XYZ estándar
-            min_zoom=min_zoom,
-            max_zoom=max_zoom
-        ).add_to(m)
-except Exception as e:
-    print("Error al cargar capa de raster:", e)
+# URL de los tiles servidos por el microservicio4
+tile_url = 'http://localhost:8000/tiles/{z}/{x}/{y}.png'
 
-# Agregar control de capas para activar/desactivar cada capa
+folium.raster_layers.TileLayer(
+    tiles=tile_url,
+    attr='Tiles GDAL',
+    name='Raster Tiles',
+    overlay=True,
+    control=True,
+    tms=True,
+    min_zoom=14,
+    max_zoom=20
+).add_to(m)
+
 folium.LayerControl().add_to(m)
-
-# Guardar el mapa en un archivo HTML
-m.save("index.html")
-print("Mapa guardado en index.html")
+m.save("mapa_con_tiles.html")
+print("Mapa guardado en mapa_con_tiles.html")

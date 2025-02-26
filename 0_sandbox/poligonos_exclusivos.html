@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6cdd2d66d322d4662791d5035bea5d00 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+</head>
+<body>
+    
+    
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionamos todos los checkbox cuyos títulos (title) empiecen con "Polígono"
+    let checkboxes = document.querySelectorAll('input[type="checkbox"][title^="Polígono"]');
+    // Cuando uno se marca, desmarcar el resto
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                // Apagar los otros
+                checkboxes.forEach(other => {
+                    if (other !== this && other.checked) {
+                        other.click(); // simula click para cambiar su estado
+                    }
+                });
+            }
+        });
+    });
+});
+</script>
+    
+            <div class="folium-map" id="map_6cdd2d66d322d4662791d5035bea5d00" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6cdd2d66d322d4662791d5035bea5d00 = L.map(
+                "map_6cdd2d66d322d4662791d5035bea5d00",
+                {
+                    center: [21.0, -101.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7e4cedee59a738bd393c9454ef795e92 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7e4cedee59a738bd393c9454ef795e92.addTo(map_6cdd2d66d322d4662791d5035bea5d00);
+        
+    
+            var tile_layer_e77233e64d30f9c8185412022de9a947 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e77233e64d30f9c8185412022de9a947.addTo(map_6cdd2d66d322d4662791d5035bea5d00);
+        
+    
+            var feature_group_8265f3cda695fc08c1fd304764ca11f5 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var polygon_69fa6fe806816b313264548f394d0212 = L.polygon(
+                [[21.1, -101.1], [21.2, -101.0], [21.15, -100.9]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8265f3cda695fc08c1fd304764ca11f5);
+        
+    
+        var popup_fef1fffdc576e40feed7f5d96a3e4655 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bdb8d259e6fb3119de3cb0252d9b09af = $(`<div id="html_bdb8d259e6fb3119de3cb0252d9b09af" style="width: 100.0%; height: 100.0%;">Polígono 1</div>`)[0];
+                popup_fef1fffdc576e40feed7f5d96a3e4655.setContent(html_bdb8d259e6fb3119de3cb0252d9b09af);
+            
+        
+
+        polygon_69fa6fe806816b313264548f394d0212.bindPopup(popup_fef1fffdc576e40feed7f5d96a3e4655)
+        ;
+
+        
+    
+    
+            feature_group_8265f3cda695fc08c1fd304764ca11f5.addTo(map_6cdd2d66d322d4662791d5035bea5d00);
+        
+    
+            var feature_group_306d6e2e2f0b874e5ebd8a49f0dada91 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var polygon_5a5c7d2cf151fb248ab502eaff74de40 = L.polygon(
+                [[21.3, -101.3], [21.4, -101.1], [21.2, -101.0]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_306d6e2e2f0b874e5ebd8a49f0dada91);
+        
+    
+        var popup_e356a64a8732e603ba48a8a2b51b0559 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b47f3c6f437d2901d941d1db45e689a = $(`<div id="html_1b47f3c6f437d2901d941d1db45e689a" style="width: 100.0%; height: 100.0%;">Polígono 2</div>`)[0];
+                popup_e356a64a8732e603ba48a8a2b51b0559.setContent(html_1b47f3c6f437d2901d941d1db45e689a);
+            
+        
+
+        polygon_5a5c7d2cf151fb248ab502eaff74de40.bindPopup(popup_e356a64a8732e603ba48a8a2b51b0559)
+        ;
+
+        
+    
+    
+            var feature_group_5f718cee8ca54b55f448d2ad1cafe96e = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var polygon_7e5cc06feec037790ad0328b4e520644 = L.polygon(
+                [[21.5, -101.5], [21.3, -101.2], [21.4, -101.0]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5f718cee8ca54b55f448d2ad1cafe96e);
+        
+    
+        var popup_96eb0464d82467853b8a704b2e523f1d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_47b8a9bca1a2d5b1318ffa8cd942ee94 = $(`<div id="html_47b8a9bca1a2d5b1318ffa8cd942ee94" style="width: 100.0%; height: 100.0%;">Polígono 3</div>`)[0];
+                popup_96eb0464d82467853b8a704b2e523f1d.setContent(html_47b8a9bca1a2d5b1318ffa8cd942ee94);
+            
+        
+
+        polygon_7e5cc06feec037790ad0328b4e520644.bindPopup(popup_96eb0464d82467853b8a704b2e523f1d)
+        ;
+
+        
+    
+    
+            var measure_control_1a0bd84a2b6ee4973a314e87a9350f9d = new L.Control.Measure(
+                {
+  "position": "topright",
+  "primaryLengthUnit": "meters",
+  "secondaryLengthUnit": "kilometers",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_6cdd2d66d322d4662791d5035bea5d00.addControl(measure_control_1a0bd84a2b6ee4973a314e87a9350f9d);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            var layer_control_471512f0943bf3543ebeadc9f4837efb_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_7e4cedee59a738bd393c9454ef795e92,
+                    "OSM (Base)" : tile_layer_e77233e64d30f9c8185412022de9a947,
+                },
+                overlays :  {
+                    "Pol\u00edgono 1" : feature_group_8265f3cda695fc08c1fd304764ca11f5,
+                    "Pol\u00edgono 2" : feature_group_306d6e2e2f0b874e5ebd8a49f0dada91,
+                    "Pol\u00edgono 3" : feature_group_5f718cee8ca54b55f448d2ad1cafe96e,
+                },
+            };
+            let layer_control_471512f0943bf3543ebeadc9f4837efb = L.control.layers(
+                layer_control_471512f0943bf3543ebeadc9f4837efb_layers.base_layers,
+                layer_control_471512f0943bf3543ebeadc9f4837efb_layers.overlays,
+                {
+  "position": "topleft",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_6cdd2d66d322d4662791d5035bea5d00);
+
+        
+</script>
+</html>
